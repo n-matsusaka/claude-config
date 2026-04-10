@@ -4,10 +4,10 @@
 
 ## セットアップ
 
-初回のみ、VS Codeのターミナルで以下を実行してください：
+初回のみ、VS Codeのターミナルで以下をコピペして実行してください：
 
-```bash
-curl -sL https://raw.githubusercontent.com/n-matsusaka/claude-config/master/setup.sh | bash
+```
+irm https://raw.githubusercontent.com/n-matsusaka/claude-config/master/setup.ps1 | iex
 ```
 
 これで以下が自動的に配置されます：
