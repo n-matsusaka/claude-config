@@ -1,30 +1,25 @@
-# claude-config
+# コラボハウス Claude Code 共通設定
 
-コラボハウス社員共通の Claude Code 設定ファイル。
+社員全員が使う Claude Code の設定を管理するリポジトリです。
 
 ## セットアップ
 
-初回のみ、以下を実行してください：
+初回のみ、VS Codeのターミナルで以下を実行してください：
 
 ```bash
-# 1. このリポジトリをクローン
-git clone https://github.com/n-matsusaka/claude-config.git ~/claude-config
-
-# 2. CLAUDE.md を ~/.claude/ にコピー
-cp ~/claude-config/CLAUDE.md ~/.claude/CLAUDE.md
-
-# 3. スキルをコピー
-cp -r ~/claude-config/skills/* ~/.claude/skills/
+curl -sL https://raw.githubusercontent.com/n-matsusaka/claude-config/master/setup.sh | bash
 ```
 
-## 更新方法
+これで以下が自動的に配置されます：
+- `~/.claude/CLAUDE.md` — 社員共通ルール
+- `~/.claude/skills/` — 共通スキル（new-project等）
+- `~/_template/` — プロジェクトテンプレート（hooks, settings.json等）
 
-松坂がルールを更新した場合、以下で最新版を取得できます：
+## 新プロジェクトの作り方
 
-```bash
-cd ~/claude-config && git pull origin main
-cp ~/claude-config/CLAUDE.md ~/.claude/CLAUDE.md
-cp -r ~/claude-config/skills/* ~/.claude/skills/
-```
+Claude Code で「新プロジェクト作って」と言うだけでOKです。
+最新の設定とテンプレートがGitHubから自動で取得されます。
 
-※ new-projectスキルを使うと、プロジェクト作成時に自動で最新化されます。
+## 設定を最新化したい場合
+
+上記のコマンドを再度実行してください。
