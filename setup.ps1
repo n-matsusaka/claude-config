@@ -4,6 +4,26 @@
 Write-Host "=== Claude Code セットアップ ===" -ForegroundColor Cyan
 Write-Host ""
 
+# Gitが見つからない場合、よくあるインストール先をPATHに追加
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    $gitPaths = @(
+        "$env:ProgramFiles\Git\cmd",
+        "${env:ProgramFiles(x86)}\Git\cmd",
+        "$env:LOCALAPPDATA\Programs\Git\cmd"
+    )
+    foreach ($p in $gitPaths) {
+        if (Test-Path "$p\git.exe") {
+            $env:PATH = "$p;$env:PATH"
+            Write-Host "Git を検出: $p" -ForegroundColor Yellow
+            break
+        }
+    }
+    if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+        Write-Host "エラー: Gitが見つかりません。Gitをインストールしてから再実行してください。" -ForegroundColor Red
+        return
+    }
+}
+
 $h = $env:USERPROFILE
 
 # ~/.claude ディレクトリの作成
